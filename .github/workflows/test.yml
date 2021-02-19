@@ -11,7 +11,7 @@ on:
       - '*'
 
 env:
-  TEST: ${{ secrets.TEST }}
+  TEST_: ${{ secrets.TEST }}
 
 jobs:
   build:
@@ -24,5 +24,6 @@ jobs:
           ls
       - name: Use cmake
         run: |
+          export TEST=$TEST_
           sh .github/scripts/test.sh
   
