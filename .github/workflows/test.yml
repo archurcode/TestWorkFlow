@@ -22,7 +22,11 @@ jobs:
       - uses: actions/checkout@v2
       - run: |
           ls
-      - name: Use cmake
+      - name: Test_0
         run: |
           sh .github/scripts/test.sh
+      - name: Test_1
+        run: |
+          cd iot-version
+          ls
   
