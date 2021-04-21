@@ -31,4 +31,5 @@ jobs:
         branch=${raw##*/}
         echo "BRANCH=$branch" >> $GITHUB_ENV
         echo ===4=$GITHUB_ENV
+    - run: echo ${{ env.BRANCH }}
 
