@@ -27,8 +27,8 @@ jobs:
         echo ===4=$(env.BRANCH)
 
     - name: Get Branch
-       run: |
-         raw=$(git branch -r --contains ${{ github.ref }})
-         branch=${raw##*/}
-         echo "===5=BRANCH=$branch" >> $GITHUB_ENV
-         echo ===6=$GITHUB_ENV
+      run: |
+        raw=$(git branch -r --contains ${{ github.ref }})
+        branch=${raw##*/}
+        echo "===5=BRANCH=$branch" >> $GITHUB_ENV
+        echo ===6=$GITHUB_ENV
