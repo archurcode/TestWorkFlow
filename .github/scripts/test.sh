@@ -1,6 +1,6 @@
 #!/bin/sh
 #set -eo pipefail
-set -e
+#set -e
 
 rtt=$(git describe --tags `git rev-list --tags --max-count=1`)
 rc=$(git rev-parse --short HEAD)
