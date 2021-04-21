@@ -15,5 +15,3 @@ jobs:
     - name: Deploy to CocoapodsPre
       run: |
         sh .github/scripts/test.sh
-      env:
-        COCOAPODS_TRUNK_TOKEN: ${{ secrets.IOT_COCOAPODS_TRUNK_TOKEN }}
