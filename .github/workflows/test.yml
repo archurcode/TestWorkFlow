@@ -10,7 +10,7 @@ jobs:
     runs-on: macos-10.15
     steps:
     - name: Checkout
-      uses: actions/checkout@v2
+      uses: actions/checkout@v1
     
     - name: Deploy to CocoapodsPre
       run: |
@@ -29,6 +29,7 @@ jobs:
       run: |
         raw=$(git branch -r --contains ${{ github.ref }})
         branch=${raw##*/}
-        echo "===5=BRANCH=$branch" >> $GITHUB_ENV
-    - run: ===6=echo ${{ env.BRANCH }}
+        echo "BRANCH=$branch" >> $GITHUB_ENV
+        echo ===4=$(branch)
+     - run: echo ${{ env.BRANCH }}
 
