@@ -25,10 +25,10 @@ jobs:
         echo ===2=${{ github.head_ref }}
         echo ===3=$(echo $GITHUB_REF | cut -d'/' -f 3)
 
-
     - name: Get Branch
       run: |
         raw=$(git branch -r --contains ${{ github.ref }})
-        branch=${raw/origin\/}
-        echo ::set-env name=BRANCH::$branch
-    - run: echo ${{ env.BRANCH }}
+        branch=${raw##*/}
+        echo "===5=BRANCH=$branch" >> $GITHUB_ENV
+    - run: ===6=echo ${{ env.BRANCH }}
+
