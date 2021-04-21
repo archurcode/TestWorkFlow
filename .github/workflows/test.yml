@@ -1,32 +1,19 @@
-name: Android CI
+name: iOS pod CI
 
 on:
   push:
-    paths-ignore: # 有時候不想要改個文档也触发 github actions
-      - '**.md'
-      - 'LICENSE'
-    tags-ignore:  # 屏蔽掉发release打tag事件
+    tags:
       - '*'
-    branches:
-      - '*'
-
-env:
-  TEST: ${{ secrets.TEST }}
 
 jobs:
-  build:
-
-    runs-on: ubuntu-18.04
-
+  build-and-deploy:
+    runs-on: macos-10.15
     steps:
-      - uses: actions/checkout@v2
-      - run: |
-          ls
-      - name: Test_0
-        run: |
-          sh .github/scripts/test.sh
-      - name: Test_1
-        run: |
-          cd iot-version
-          ls
-  
+    - name: Checkout
+      uses: actions/checkout@v2
+    
+    - name: Deploy to CocoapodsPre
+      run: |
+        sh .github/scripts/test.sh
+      env:
+        COCOAPODS_TRUNK_TOKEN: ${{ secrets.IOT_COCOAPODS_TRUNK_TOKEN }}
