@@ -32,6 +32,11 @@ jobs:
     - name: Echo
       run: |
         echo ${{ steps.tag.outputs.result }}
+        echo ============1
         git tag
+        echo ============2
+        git describe --tags `git rev-list --tags --max-count=1`
+        echo ============3
+        git describe --tags --abbrev=0
 
 
