@@ -22,11 +22,14 @@ jobs:
       id: vars
       run: echo ::set-output name=short_ref::${GITHUB_REF#refs/*/}
 
-    - name: Get Branch
-      run: |
-        raw=$(git tag -r --contains ${{ github.ref }})
-        branch=${raw##*/}
-        echo "BRANCH=$branch" >> $GITHUB_ENV
-    - run: echo ${{ env.BRANCH }}
+    - name: Extract tag name
+      id: tag
+      uses: actions/github-script@0.2.0
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        script: |
+          return context.payload.ref.replace(/\/refs\/tags\//, '');
+    - name: Echo
+      run: echo ${{ steps.tag.outputs.result }}
 
 
