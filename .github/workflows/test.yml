@@ -2,8 +2,9 @@ name: iOS pod CI
 
 on:
   push:
-    tags:
-      - '*'
+    paths-ignore:
+      - '**.md'
+      - 'LICENSE'
 
 jobs:
   build-and-deploy:
@@ -12,7 +13,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
       with:
-        fetch-depth: 2
+        fetch-depth: 0
     
     - name: Deploy to CocoapodsPre
       run: |
@@ -21,17 +22,11 @@ jobs:
       id: vars
       run: echo ::set-output name=short_ref::${GITHUB_REF#refs/*/}
 
-    - name: Check output
-      run: |
-        echo ===1=${{ steps.vars.outputs.short_ref }}
-        echo ===2=${{ github.head_ref }}
-        echo ===3=$(echo $GITHUB_REF | cut -d'/' -f 3)
-
     - name: Get Branch
       run: |
-        raw=$(git branch -r --contains ${{ github.ref }})
+        raw=$(git tag -r --contains ${{ github.ref }})
         branch=${raw##*/}
         echo "BRANCH=$branch" >> $GITHUB_ENV
-        echo ===4=$GITHUB_ENV
     - run: echo ${{ env.BRANCH }}
+
 
