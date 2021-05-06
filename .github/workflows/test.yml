@@ -13,4 +13,5 @@ jobs:
       uses: actions/checkout@v2
     - name: install fir
       run: |
+        sudo apt-get install ruby-dev
         sudo gem install fir-cli
