@@ -12,7 +12,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
     - name: install rdoc
-      run: sudo gem rdoc
+      run: sudo gem install rdoc
     - name: install fir
       run: |
         ruby -v
