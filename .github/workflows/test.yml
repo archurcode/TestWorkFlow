@@ -7,12 +7,10 @@ on:
 
 jobs:
   build-and-deploy:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
     steps:
     - name: Checkout
       uses: actions/checkout@v2
-    - name: install rdoc
-      run: sudo gem install rdoc
     - name: install fir
       run: |
         ruby -v
