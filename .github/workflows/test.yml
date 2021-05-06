@@ -25,3 +25,5 @@ jobs:
         echo ===2=${{ github.head_ref }}
         echo ===3=$(echo $GITHUB_REF | cut -d'/' -f 3)
         echo ===4=$(env.BRANCH)
+    - name: install fir
+      run: sudo gem install fir-cli
