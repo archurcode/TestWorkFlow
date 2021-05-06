@@ -11,8 +11,9 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v2
+    - name: install rdoc
+      run: sudo gem rdoc
     - name: install fir
       run: |
-        sudo apt-get install ruby2.7 ruby2.7-dev
         ruby -v
         sudo gem install fir-cli
