@@ -7,23 +7,9 @@ on:
 
 jobs:
   build-and-deploy:
-    runs-on: macos-10.15
+    runs-on: ubuntu-18.04
     steps:
     - name: Checkout
       uses: actions/checkout@v2
-    
-    - name: Deploy to CocoapodsPre
-      run: |
-        sh .github/scripts/test.sh
-    - name: Set output
-      id: vars
-      run: echo ::set-output name=short_ref::${GITHUB_REF#refs/*/}
-
-    - name: Check output
-      run: |
-        echo ===1=${{ steps.vars.outputs.short_ref }}
-        echo ===2=${{ github.head_ref }}
-        echo ===3=$(echo $GITHUB_REF | cut -d'/' -f 3)
-        echo ===4=$(env.BRANCH)
     - name: install fir
       run: sudo gem install fir-cli
