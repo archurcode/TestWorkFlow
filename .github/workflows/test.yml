@@ -13,9 +13,5 @@ jobs:
       uses: actions/checkout@v2
     - name: install fir
       run: |
-        sudo gem sources --remove https://rubygems.org/
-        sudo gem sources -a https://gems.ruby-china.com/
-        sudo gem sources -l
-        sudo gem update --system
-        sudo apt-get install ruby-dev
+        ruby -v
         sudo gem install fir-cli
