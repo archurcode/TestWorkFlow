@@ -11,13 +11,24 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v2
-    - name: update ruby
+    - name: zip test
       run: |
-        sudo add-apt-repository ppa:brightbox/ruby-ng
-        sudo apt-get update
-        sudo apt-get purge --auto-remove ruby
-        sudo apt-get install ruby2.7 ruby2.7-dev
-    - name: install fir
-      run: |
-        ruby -v
-        sudo gem install fir-cli
+        mkdir test
+        touch test/test.txt
+        zip -r test.zip test
+    - name: Upload aar to Artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: test
+        path: |
+          test.zip
+#     - name: update ruby
+#       run: |
+#         sudo add-apt-repository ppa:brightbox/ruby-ng
+#         sudo apt-get update
+#         sudo apt-get purge --auto-remove ruby
+#         sudo apt-get install ruby2.7 ruby2.7-dev
+#     - name: install fir
+#       run: |
+#         ruby -v
+#         sudo gem install fir-cli
