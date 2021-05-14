@@ -1,9 +1,8 @@
 name: iOS pod CI
 
 on:
-  push:
-    branches:
-      - '*'
+  release:
+    types: [published]
 
 jobs:
   build-and-deploy:
