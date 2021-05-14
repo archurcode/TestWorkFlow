@@ -23,7 +23,7 @@ jobs:
           name: test
           path: |
             test.zip
-      - name: Upload xp2p to Asset
+      - name: Upload Release apk to Asset
         uses: actions/upload-release-asset@v1
         with:
           upload_url: ${{ github.event.release.upload_url }}
