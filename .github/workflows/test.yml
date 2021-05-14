@@ -1,8 +1,10 @@
 name: iOS pod CI
 
 on:
-  release:
-    types: [published]
+  push:
+    paths-ignore:
+      - '**.md'
+      - 'LICENSE'
 
 jobs:
   build-and-deploy:
