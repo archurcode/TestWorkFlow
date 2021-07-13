@@ -1,0 +1,20 @@
+name: Android Release CI
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-20.04
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Fix App Version
+        run: |
+          rtt=$(git describe --tags `git rev-list --tags --max-count=1`)
+          rt=${rtt#*v}
+          if: contains(rt, 'video')
+          run:
+            echo "=====test======"
