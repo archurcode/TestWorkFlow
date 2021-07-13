@@ -20,6 +20,6 @@ jobs:
           curr_tag: $rt
 
       - name: Test
-        if: contains(${{steps.env.curr_tag}}, 'video')
+        if: contains('vivivi', 'video')
         run: |
           echo "=== this is video tag " ${{steps.env.curr_tag}} ===
