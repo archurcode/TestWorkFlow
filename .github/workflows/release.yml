@@ -10,14 +10,15 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Echo Tag
+        id: get_tag
         run: |
           rtt=$(git describe --tags `git rev-list --tags --max-count=1`)
           rt=${rtt#*v}
           echo === $rt ===
         env:
-          curr_tag: ${{ rt }}
+          curr_tag: $rt
 
       - name: Test
-        if: contains(${{steps.env.curr_tag}}, 'video')
+        if: contains(${{steps.get_tag.env.curr_tag}}, 'video')
         run: |
-          echo "=== this is video tag " ${{steps.env.curr_tag}} ===
+          echo "=== this is video tag " ${{steps.get_tag.env.curr_tag}} ===
