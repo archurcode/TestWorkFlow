@@ -11,9 +11,12 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - name: Fix App Version
-        if: contains(rt, 'video')
+      - name: Echo Tag
         run: |
           rtt=$(git describe --tags `git rev-list --tags --max-count=1`)
           rt=${rtt#*v}
           echo $rt =====
+      - name: Test
+        if: contains($rt, 'video')
+        run: |
+          echo 'this is video tag'
