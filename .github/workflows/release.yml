@@ -15,10 +15,9 @@ jobs:
           rtt=$(git describe --tags `git rev-list --tags --max-count=1`)
           rt=${rtt#*v}
           echo === $rt ===
-        env:
-          curr_tag: $rt
+          echo "curr_tag=$rt" >> $GITHUB_ENV
 
       - name: Test
-        if: contains(${{steps.get_tag.env.curr_tag}}, 'video')
+        if: contains(${{ env.curr_tag }}, 'video')
         run: |
-          echo "=== this is video tag " ${{steps.get_tag.env.curr_tag}} ===
+          echo "=== this is video tag " ${{ env.curr_tag }} ===
