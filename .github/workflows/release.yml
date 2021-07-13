@@ -6,9 +6,7 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-20.04
-
     steps:
       - uses: actions/checkout@v2
       - name: Echo Tag
@@ -20,6 +18,6 @@ jobs:
           curr_tag: $rt
 
       - name: Test
-        if: contains('vivivi', 'video')
+        if: contains(${{jobs.build.steps.env.curr_tag}}, 'video')
         run: |
-          echo "=== this is video tag " ${{steps.env.curr_tag}} ===
+          echo "=== this is video tag " ${{jobs.build.steps.env.curr_tag}} ===
