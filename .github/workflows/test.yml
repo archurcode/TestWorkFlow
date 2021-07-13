@@ -2,9 +2,13 @@ name: iOS pod CI
 
 on:
   push:
-    paths-ignore:
+    paths-ignore: # 有時候不想要改個文档也触发 github actions
       - '**.md'
       - 'LICENSE'
+    tags-ignore:  # 屏蔽掉发release打tag事件
+      - '*'
+    branches:
+      - '*'
 
 jobs:
   build-and-deploy:
