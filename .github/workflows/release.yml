@@ -15,6 +15,7 @@ jobs:
         run: |
           rtt=$(git describe --tags `git rev-list --tags --max-count=1`)
           rt=${rtt#*v}
+          echo === $rt ===
         env:
           curr_tag: $rt
 
