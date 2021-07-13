@@ -15,8 +15,9 @@ jobs:
         run: |
           rtt=$(git describe --tags `git rev-list --tags --max-count=1`)
           rt=${rtt#*v}
-          echo $rt =====
+        env:
+          is_video: contains($rt, 'video')
       - name: Test
-        if: contains($rt, 'video')
+        if: $steps.is_video
         run: |
           echo 'this is video tag'
