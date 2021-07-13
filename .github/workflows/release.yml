@@ -22,4 +22,4 @@ jobs:
       - name: Test
         if: contains(${{steps.env.curr_tag}}, 'video')
         run: |
-          echo 'this is video tag'
+          echo "=== this is video tag " ${{steps.env.curr_tag}} ===
