@@ -18,6 +18,6 @@ jobs:
           curr_tag: $rt
 
       - name: Test
-        if: contains(${{jobs.build.steps.env.curr_tag}}, 'video')
+        if: contains(${{jobs.build.env.curr_tag}}, 'video')
         run: |
-          echo "=== this is video tag " ${{jobs.build.steps.env.curr_tag}} ===
+          echo "=== this is video tag " ${{jobs.build.env.curr_tag}} ===
