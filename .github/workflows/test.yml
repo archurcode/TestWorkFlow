@@ -21,5 +21,5 @@ jobs:
           fetch-depth: 0
       - name: Fix App Version
         run: |
-          rtt=$(git describe --match "*video*" --abbrev=0 HEAD)
+          rtt=$(git describe --tags --match "*video*" --abbrev=0 HEAD)
           echo $rtt ===
