@@ -15,10 +15,11 @@ jobs:
     runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v2
-      - name: Test
+      - name: Echo Tag
         run: |
           rtt=$(git describe --tags `git rev-list --tags --max-count=1`)
-          echo $rtt
+          rt=${rtt#*v}
+          echo === $rt ===
 #       - name: zip test
 #         run: |
 #           mkdir test
