@@ -17,7 +17,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: Test
         run: |
-          git tag --contains video
+          git describe --tags `git rev-list --tags --max-count=5`
 #       - name: zip test
 #         run: |
 #           mkdir test
