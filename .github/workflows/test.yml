@@ -14,11 +14,10 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-18.04
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v2
       - name: Test
         run: |
-          rtt=$(git describe --match "video" --abbrev=4 HEAD)
+          rtt=$(git tag --contains video)
           rt=${rtt#*v}
           echo === $rt ===
 #       - name: zip test
