@@ -17,7 +17,8 @@ jobs:
       - uses: actions/checkout@v2
       - name: Test
         run: |
-          git describe --tags `git rev-list --tags --max-count=5`
+          rtt=$(git describe --tags `git rev-list --tags --max-count=1`)
+          echo $rtt
 #       - name: zip test
 #         run: |
 #           mkdir test
