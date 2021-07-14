@@ -22,4 +22,4 @@ jobs:
       - name: Fix App Version
         run: |
           rtt=$(git describe --tags `git rev-list --tags --max-count=1`)
-          echo $rtt
+          echo $rtt ===
