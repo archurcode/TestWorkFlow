@@ -22,4 +22,4 @@ jobs:
       - name: Fix App Version
         run: |
           rtt=$(git describe --tags --match "*video*" --abbrev=0 HEAD)
-          echo $rtt ===
+          echo $rtt ====
