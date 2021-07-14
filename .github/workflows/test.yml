@@ -21,5 +21,5 @@ jobs:
           fetch-depth: 0
       - name: Fix App Version
         run: |
-          rtt=$(git grep video `git rev-list --all`)
+          rtt=$(git describe --tags `git rev-list --tags --max-count=1`)
           echo $rtt
