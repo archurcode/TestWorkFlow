@@ -1,4 +1,4 @@
-name: iOS pod CI
+name: Android Debug CI
 
 on:
   push:
@@ -18,7 +18,7 @@ jobs:
         uses: actions/checkout@v2
       - name: Test
         run: |
-          rtt=$(git describe --tags `git rev-list --tags --grep video --max-count=1`)
+          rtt=$(git describe --match "video" --abbrev=4 HEAD)
           rt=${rtt#*v}
           echo === $rt ===
 #       - name: zip test
