@@ -23,3 +23,5 @@ jobs:
         run: |
           rtt=$(git describe --tags --match "*video*" --abbrev=0 HEAD)
           echo $rtt ====
+          rttt=$(git describe --tags --match "^v\d+(\.\d+){2}$" --abbrev=0 HEAD)
+          echo $rttt ----
