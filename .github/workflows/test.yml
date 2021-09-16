@@ -1,42 +1,27 @@
-name: iOS pod CI
+name: Android Debug CI
 
 on:
   push:
-    paths-ignore:
+    paths-ignore: # 有時候不想要改個文档也触发 github actions
       - '**.md'
       - 'LICENSE'
+    tags-ignore:  # 屏蔽掉发release打tag事件
+      - '*'
+    branches:
+      - '*'
 
 jobs:
-  build-and-deploy:
-    runs-on: macos-10.15
+  build:
+
+    runs-on: ubuntu-20.04
+
     steps:
-    - name: Checkout
-      uses: actions/checkout@v2
-      with:
-        fetch-depth: 0
-    
-    - name: Deploy to CocoapodsPre
-      run: |
-        sh .github/scripts/test.sh
-    - name: Set output
-      id: vars
-      run: echo ::set-output name=short_ref::${GITHUB_REF#refs/*/}
-
-    - name: Extract tag name
-      id: tag
-      uses: actions/github-script@0.2.0
-      with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
-        script: |
-          return context.payload.ref.replace(/\/refs\/tags\//, '');
-    - name: Echo
-      run: |
-        echo ${{ steps.tag.outputs.result }}
-        echo ============1
-        git tag
-        echo ============2
-        git describe --tags `git rev-list --tags --max-count=1`
-        echo ============3
-        git describe --tags --abbrev=0
-
-
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Fix App Version
+        run: |
+          rtt=$(git describe --tags --match "*video*" --abbrev=0 HEAD)
+          echo $rtt =====
+          rttt=$(git describe --tags --match "v[0-9]*" --abbrev=0 HEAD)
+          echo $rttt ----v1.0.x_latest_tag
