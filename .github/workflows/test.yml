@@ -24,4 +24,4 @@ jobs:
           rtt=$(git describe --tags --match "*video*" --abbrev=0 HEAD)
           echo $rtt =====
           rttt=$(git describe --tags --match "v[0-9]*" --abbrev=0 HEAD)
-          echo $rttt -----
+          echo $rttt ----main_latest_tag
