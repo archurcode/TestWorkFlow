@@ -27,3 +27,6 @@ jobs:
           echo $rttt ----main_latest_tag
           VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
           echo $VERSION
+      - name: Sleep for 30 seconds
+        run: sleep 10s
+        shell: bash
