@@ -43,7 +43,9 @@ jobs:
         shell: bash
       - name: Test success
         if: ${{ success() }}
+        run: |
           echo success!!!
       - name: Test fail
         if: ${{ failure() }}
+        run: |
           echo fail!!!
