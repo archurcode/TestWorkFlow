@@ -41,3 +41,9 @@ jobs:
       - name: Sleep for 30 seconds
         run: sleep 30s
         shell: bash
+      - name: Test success
+        if: ${{ success() }}
+          echo success!!!
+      - name: Test fail
+        if: ${{ failure() }}
+          echo fail!!!
