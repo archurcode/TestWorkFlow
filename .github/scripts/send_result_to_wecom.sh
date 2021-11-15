@@ -1,6 +1,6 @@
 #!/bin/sh
 
-curl 'https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=$WECOM_CI_ROBOT_KEY' \
+curl "https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=$WECOM_CI_ROBOT_KEY" \
    -H 'Content-Type: application/json' \
    -d '
    {
