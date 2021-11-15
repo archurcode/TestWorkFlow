@@ -49,9 +49,9 @@ jobs:
         run: |
           echo success!!!
           echo ${{ github.event.repository.name }}
-          sh .github/scripts/send_result_to_wecom.sh ${{ github.event.repository.name }} success
+          bash .github/scripts/send_result_to_wecom.sh ${{ github.event.repository.name }} success
       - name: Test fail
         if: ${{ failure() }}
         run: |
           echo fail!!!
-          sh .github/scripts/send_result_to_wecom.sh ${{ github.event.repository.name }} fail
+          bash .github/scripts/send_result_to_wecom.sh ${{ github.event.repository.name }} fail
