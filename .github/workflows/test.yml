@@ -10,6 +10,9 @@ on:
     branches:
       - '*'
 
+env:
+  IOT_WECOM_CID_ROBOT_KEY: ${{ secrets.IOT_WECOM_CID_ROBOT_KEY }}
+
 jobs:
   build:
 
@@ -45,6 +48,7 @@ jobs:
         if: ${{ success() }}
         run: |
           echo success!!!
+          sh .github/scripts/send_result_to_wecom.sh
       - name: Test fail
         if: ${{ failure() }}
         run: |
