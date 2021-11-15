@@ -41,14 +41,13 @@ jobs:
           echo $rttt ----main_latest_tag
           VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
           echo $VERSION
-      - name: Sleep for 30 seconds
-        run: sleep 30s
+      - name: Sleep for 5 seconds
+        run: sleep 5s
         shell: bash
       - name: Test success
         if: ${{ success() }}
         run: |
           echo success!!!
-          export WECOM_CI_ROBOT_KEY=$IOT_WECOM_CID_ROBOT_KEY
           sh .github/scripts/send_result_to_wecom.sh
       - name: Test fail
         if: ${{ failure() }}
