@@ -1,7 +1,7 @@
 #!/bin/sh
 
 color=""
-if [ $2 == "success" ]
+if [$2=="success"]
 then
    echo "success"
    color="info"
