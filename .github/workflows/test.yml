@@ -48,6 +48,7 @@ jobs:
         if: ${{ success() }}
         run: |
           echo success!!!
+          echo ${{ github.event.repository.name }}
           sh .github/scripts/send_result_to_wecom.sh
       - name: Test fail
         if: ${{ failure() }}
