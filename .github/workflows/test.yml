@@ -41,6 +41,12 @@ jobs:
           echo $rttt ----main_latest_tag
           VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
           echo $VERSION
+      - name: Download r10e NDK
+        run: |
+          wget https://dl.google.com/android/repository/android-ndk-r10e-linux-x86_64.zip
+          unzip android-ndk-r10e-linux-x86_64.zip
+          cd android-ndk-r10e
+          pwd
       - name: Sleep for 5 seconds
         run: sleep 5s
         shell: bash
