@@ -16,7 +16,7 @@ env:
 jobs:
   build:
 
-    runs-on: ubuntu-20.04
+    runs-on: macos-10.15
 
     steps:
       - uses: actions/checkout@v2
@@ -43,8 +43,8 @@ jobs:
           echo $VERSION
       - name: Download r10e NDK
         run: |
-          wget https://dl.google.com/android/repository/android-ndk-r10e-linux-x86_64.zip
-          unzip android-ndk-r10e-linux-x86_64.zip
+          wget https://dl.google.com/android/repository/android-ndk-r10e-darwin-x86_64.zip
+          unzip android-ndk-r10e-darwin-x86_64.zip
           cd android-ndk-r10e
           echo $(pwd)
       - name: Sleep for 5 seconds
