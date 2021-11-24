@@ -39,11 +39,11 @@ jobs:
           echo $rtt =====
           rttt=$(git describe --tags --match "v[0-9]*" --abbrev=0 HEAD)
           echo $rttt ----main_latest_tag
-          VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
+          VERSION=$(echo "${{ github.ref }}" | sed -e s,.*/\(.*\),\1,')
           echo $VERSION
       - name: Download r10e NDK
         run: |
-        wget https://dl.google.com/android/repository/android-ndk-r10e-darwin-x86_64.zip
+          wget https://dl.google.com/android/repository/android-ndk-r10e-darwin-x86_64.zip
           unzip android-ndk-r10e-darwin-x86_64.zip
           cd android-ndk-r10e
           echo $(pwd)
