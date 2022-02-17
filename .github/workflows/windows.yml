@@ -34,5 +34,4 @@ jobs:
         .\.github\scripts\windows.cmd $version
       shell: pwsh
       env:
-        GIT_ACCESS_TOKEN: ${{ secrets.IOT_GITHUB_ACCESS_TOKEN }}
-        PROVISIONING_PASSWORD: ${{ secrets.GPG_DECRYPT_PASSPHRASE }}
+        GIT_ACCESS_TOKEN: git_access_token
