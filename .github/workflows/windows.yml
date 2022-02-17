@@ -28,7 +28,7 @@ jobs:
     - name: build libenet
       if: startsWith(github.event.ref, 'refs/heads')
       run: |
-        $branch=${{ github.ref }}
+        $branch="${{ github.ref }}"
         $version=$branch.Split("/")[2]
         echo $version
         export GIT_BRANCH_IMAGE_VERSION=$version
