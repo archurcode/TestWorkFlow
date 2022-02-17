@@ -31,7 +31,7 @@ jobs:
         $branch="${{ github.ref }}"
         $version=$branch.Split("/")[2]
         echo $version
-        export GIT_BRANCH_IMAGE_VERSION=$version
+        .\.github\scripts\windows.cmd
       shell: pwsh
       env:
         GIT_ACCESS_TOKEN: ${{ secrets.IOT_GITHUB_ACCESS_TOKEN }}
