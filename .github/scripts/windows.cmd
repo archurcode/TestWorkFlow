@@ -26,6 +26,12 @@ echo 333---%rb%
 for /F %%i in ('call echo https://%%GIT_ACCESS_TOKEN%%@github.com/tencentyun/iot-p2p.git') do ( set commitid=%%i)
 set url=%commitid%
 
-git clone %url%
-cd iot-p2p
+Rem git clone %url%
+Rem cd iot-p2p
+
+if  %1==main (
+    echo  %1==main
+)  else  (
+    echo  %1!=main
+)
 
