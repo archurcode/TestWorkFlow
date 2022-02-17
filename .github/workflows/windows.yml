@@ -43,6 +43,7 @@ jobs:
     - name: build libenet
       if: startsWith(github.event.ref, 'refs/heads')
       run: |
+        cmake --version
         $branch="${{ github.ref }}"
         $version=$branch.Split("/")[2]
         echo $version
