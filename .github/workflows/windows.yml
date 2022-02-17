@@ -31,7 +31,7 @@ jobs:
         $branch="${{ github.ref }}"
         $version=$branch.Split("/")[2]
         echo $version
-        .\.github\scripts\windows.cmd
+        .\.github\scripts\windows.cmd $version
       shell: pwsh
       env:
         GIT_ACCESS_TOKEN: ${{ secrets.IOT_GITHUB_ACCESS_TOKEN }}
