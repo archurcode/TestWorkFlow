@@ -29,8 +29,8 @@ jobs:
       if: startsWith(github.event.ref, 'refs/heads')
       run: |
         VERSION=$(echo "${{ github.ref }}")
+        echo $VERSION
         export GIT_BRANCH_IMAGE_VERSION=$VERSION
-        sh .github/script/build_enet_windows.sh Debug
       shell: pwsh
       env:
         GIT_ACCESS_TOKEN: ${{ secrets.IOT_GITHUB_ACCESS_TOKEN }}
