@@ -1,6 +1,8 @@
 REM ############################## windows cmd
 REM Test
 
+dir C:\Program Files (x86)\Windows Kits\10\bin\10.0.22000.0\x86\
+
 set branch=%1
 echo %branch%
 
