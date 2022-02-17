@@ -22,10 +22,8 @@ echo 111---%rtt%
 echo 222---%rc%
 echo 333---%rb%
 
-call echo %%GIT_ACCESS_TOKEN%%
+set GIT_ACCESS_TOKEN=call echo %%GIT_ACCESS_TOKEN%%
 
-echo %%GIT_ACCESS_TOKEN%%
-
-git clone https://$GIT_ACCESS_TOKEN@github.com/tencentyun/iot-p2p.git
+git clone https://%GIT_ACCESS_TOKEN%@github.com/tencentyun/iot-p2p.git
 cd iot-p2p
 
