@@ -50,14 +50,14 @@ jobs:
       - name: Sleep for 5 seconds
         run: sleep 5s
         shell: bash
-      - name: Test success
-        if: ${{ success() }}
-        run: |
-          echo success!!!
-          echo ${{ github.event.repository.name }}
-          bash .github/scripts/send_result_to_wecom.sh ${{ github.event.repository.name }} success
-      - name: Test fail
-        if: ${{ failure() }}
-        run: |
-          echo fail!!!
-          bash .github/scripts/send_result_to_wecom.sh ${{ github.event.repository.name }} fail
+#       - name: Test success
+#         if: ${{ success() }}
+#         run: |
+#           echo success!!!
+#           echo ${{ github.event.repository.name }}
+#           bash .github/scripts/send_result_to_wecom.sh ${{ github.event.repository.name }} success
+#       - name: Test fail
+#         if: ${{ failure() }}
+#         run: |
+#           echo fail!!!
+#           bash .github/scripts/send_result_to_wecom.sh ${{ github.event.repository.name }} fail
