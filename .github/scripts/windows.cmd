@@ -1,8 +1,7 @@
 REM ############################## windows cmd
 REM Test
 
-cd C:\Program Files (x86)\Windows Kits\10\bin\10.0.22000.0\x86\
-dir
+call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvars32.bat"
 
 set branch=%1
 echo %branch%
@@ -38,4 +37,3 @@ if  %1==main (
     echo  %1!=main
 )
 
-dir C:\Program Files (x86)\Windows Kits\10\bin\10.0.18362.0\x64
