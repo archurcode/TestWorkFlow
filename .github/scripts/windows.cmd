@@ -22,3 +22,8 @@ echo 111---%rtt%
 echo 222---%rc%
 echo 333---%rb%
 
+
+#1.拉取eNet支持库
+git clone https://$GIT_ACCESS_TOKEN@github.com/tencentyun/iot-p2p.git
+cd iot-p2p
+
