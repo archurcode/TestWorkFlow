@@ -40,7 +40,6 @@ jobs:
         }
         Invoke-VSDevEnvironment
         Get-Command rc.exe | Format-Table -AutoSize
-        call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvars32.bat" x86
       shell: pwsh
     - name: build libenet
       if: startsWith(github.event.ref, 'refs/heads')
