@@ -5,10 +5,18 @@ set branch=%1
 echo %branch%
 
 set rtt=%1
-set rc=`git rev-parse --short HEAD`
-set rb=`git rev-parse --abbrev-ref HEAD`
-set currtag=`git describe --tags --match "v[0-9]*" --abbrev=0 HEAD`
+
+for /F %%i in ('git rev-parse --short HEAD') do ( set commitid=%%i)
+set rc=%commitid%
+
+for /F %%i in ('git rev-parse --abbrev-ref HEAD') do ( set commitid=%%i)
+set rb=%commitid%
+
+for /F %%i in ('git describe --tags --match "v[0-9]*" --abbrev=0 HEAD') do ( set commitid=%%i)
+set currtag=%commitid%
+
 set currbra=%rb%
+
 echo 000---%currtag%
 echo 111---%rtt%
 echo 222---%rc%
