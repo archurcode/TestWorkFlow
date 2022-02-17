@@ -28,7 +28,7 @@ jobs:
     - name: build libenet
       if: startsWith(github.event.ref, 'refs/heads')
       run: |
-        VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
+        VERSION=$(echo "${{ github.ref }}")
         export GIT_BRANCH_IMAGE_VERSION=$VERSION
         sh .github/script/build_enet_windows.sh Debug
       shell: pwsh
