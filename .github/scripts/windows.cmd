@@ -23,6 +23,9 @@ echo 222---%rc%
 echo 333---%rb%
 
 
-git clone https://%%GIT_ACCESS_TOKEN%%@github.com/tencentyun/iot-p2p.git
+for /F %%i in ('call echo https://%%GIT_ACCESS_TOKEN%%@github.com/tencentyun/iot-p2p.git') do ( set commitid=%%i)
+set url=%commitid%
+
+git clone %url%
 cd iot-p2p
 
