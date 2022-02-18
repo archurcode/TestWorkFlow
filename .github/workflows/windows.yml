@@ -26,29 +26,37 @@ jobs:
 #       with:
 #         cmake-version: '3.17.0'
 
-    - name: RC.exe
+#     - name: RC.exe
+#       run: |
+#         function Invoke-VSDevEnvironment {
+#             $vswhere = "${env:ProgramFiles(x86)}\Microsoft Visual Studio\Installer\vswhere.exe"
+#             $installationPath = & $vswhere -prerelease -legacy -latest -property installationPath
+#             $Command = Join-Path $installationPath "Common7\Tools\vsdevcmd.bat"
+#           & "${env:COMSPEC}" /s /c "`"$Command`" -no_logo && set" | Foreach-Object {
+#                 if ($_ -match '^([^=]+)=(.*)') {
+#                     [System.Environment]::SetEnvironmentVariable($matches[1], $matches[2])
+#                 }
+#             }
+#         }
+#         Invoke-VSDevEnvironment
+#         Get-Command rc.exe | Format-Table -AutoSize
+#       shell: pwsh
+    - name: Compress SDK Artifacts
       run: |
-        function Invoke-VSDevEnvironment {
-            $vswhere = "${env:ProgramFiles(x86)}\Microsoft Visual Studio\Installer\vswhere.exe"
-            $installationPath = & $vswhere -prerelease -legacy -latest -property installationPath
-            $Command = Join-Path $installationPath "Common7\Tools\vsdevcmd.bat"
-          & "${env:COMSPEC}" /s /c "`"$Command`" -no_logo && set" | Foreach-Object {
-                if ($_ -match '^([^=]+)=(.*)') {
-                    [System.Environment]::SetEnvironmentVariable($matches[1], $matches[2])
-                }
-            }
-        }
-        Invoke-VSDevEnvironment
-        Get-Command rc.exe | Format-Table -AutoSize
-      shell: pwsh
-    - name: build libenet
-      if: startsWith(github.event.ref, 'refs/heads')
-      run: |
-        cmake --version
-        $branch="${{ github.ref }}"
-        $version=$branch.Split("/")[2]
-        echo $version
-        .\.github\scripts\windows.cmd $version
-      shell: pwsh
-      env:
-        GIT_ACCESS_TOKEN: git_access_token
+        tar.exe -a -c -f xp2p_windows.zip .github
+    - name: Upload Windows SDK Library
+      uses: actions/upload-artifact@v2
+      with:
+        name: xp2p_windows_lib
+        path: xp2p_windows.zip
+#     - name: build libenet
+#       if: startsWith(github.event.ref, 'refs/heads')
+#       run: |
+#         cmake --version
+#         $branch="${{ github.ref }}"
+#         $version=$branch.Split("/")[2]
+#         echo $version
+#         .\.github\scripts\windows.cmd $version
+#       shell: pwsh
+#       env:
+#         GIT_ACCESS_TOKEN: git_access_token
