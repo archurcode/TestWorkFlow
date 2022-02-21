@@ -35,5 +35,6 @@ if  %1==main (
     echo  %1!=main
 )
 
+Set-Alias -Name sed -Value C:\Program Files (x86)\Git\usr\bin\sed.exe
 
-call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvarsall.bat"
+sed -i "s/.*VIDEOSDKVERSION.*/static const char * VIDEOSDKVERSION = \"$VIDEOSDKVERSION\";/g" ../iot/link/app_common/app_p2p/appWrapper.h
