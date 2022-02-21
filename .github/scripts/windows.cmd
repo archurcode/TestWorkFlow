@@ -35,6 +35,6 @@ if  %1==main (
     echo  %1!=main
 )
 
-Set-Alias -Name sed -Value C:\Program Files (x86)\Git\usr\bin\sed.exe
+.\C:\Program Files\Git\usr\bin\sed.exe -i "s/.*VIDEOSDKVERSION.*/static const char * VIDEOSDKVERSION = \"$VIDEOSDKVERSION\";/g" ../iot/link/app_common/app_p2p/appWrapper.h
 
-sed -i "s/.*VIDEOSDKVERSION.*/static const char * VIDEOSDKVERSION = \"$VIDEOSDKVERSION\";/g" ../iot/link/app_common/app_p2p/appWrapper.h
+.\C:\Program Files (x86)\Git\usr\bin\sed.exe -i "s/.*VIDEOSDKVERSION.*/static const char * VIDEOSDKVERSION = \"$VIDEOSDKVERSION\";/g" ../iot/link/app_common/app_p2p/appWrapper.h
