@@ -35,6 +35,12 @@ if  %1==main (
     echo  %1!=main
 )
 
+set sed="C:\Program Files\Git\usr\bin\sed.exe"
+
+%sed% -i s/iot-p2p/iot-p2pppppppppppppppp/g windows.cmd
+
+cat .\windows.cmd
+
 .\C:\Program Files\Git\usr\bin\sed.exe -i "s/.*VIDEOSDKVERSION.*/static const char * VIDEOSDKVERSION = \"$VIDEOSDKVERSION\";/g" ../iot/link/app_common/app_p2p/appWrapper.h
 
 .\C:\Program Files (x86)\Git\usr\bin\sed.exe -i "s/.*VIDEOSDKVERSION.*/static const char * VIDEOSDKVERSION = \"$VIDEOSDKVERSION\";/g" ../iot/link/app_common/app_p2p/appWrapper.h
